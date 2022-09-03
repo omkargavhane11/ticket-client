@@ -1,0 +1,79 @@
+.queryBox {
+  /* border: 1px solid gray; */
+  height: max-content;
+  width: 50%;
+  border-radius: 5px;
+  font-size: 18px;
+  text-align: left;
+  border: 1px solid rgb(215, 213, 213);
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.queryBox:hover {
+  border: 1px solid rgb(6, 6, 6);
+}
+
+.queryBox_top {
+  display: flex;
+  justify-content: space-between;
+}
+
+.queryBox_bottom_desc {
+  display: flex;
+  justify-content: space-between;
+  /* flex-direction: column; */
+  /* gap: 10px; */
+  /* text-align: left; */
+}
+
+.unassigned {
+  color: rgba(180, 35, 35, 0.682);
+  background-color: rgba(152, 22, 22, 0.068);
+  padding: 4px;
+  border-radius: 4px 6px;
+  font-weight: normal;
+}
+.assigned {
+  color: rgb(50, 149, 203);
+  background-color: rgba(50, 149, 203, 0.164);
+  padding: 4px;
+  border-radius: 4px 6px;
+  font-weight: normal;
+}
+.closed {
+  color: rgb(3, 174, 3);
+  background-color: rgba(0, 128, 0, 0.175);
+  padding: 4px;
+  border-radius: 4px 6px;
+  font-weight: normal;
+}
+
+.pick_btn {
+  width: 100px;
+  background-color: white;
+  color: teal;
+  padding: 5px;
+  border-radius: 5px;
+  border: 1px solid teal;
+  font-size: 16px;
+  margin-top: 10px;
+}
+
+.pick_btn:hover {
+  border: none;
+  background-color: teal;
+  color: white;
+  border: 1px solid white;
+}
+
+.extra_buttons {
+  display: flex;
+  gap: 10px;
+}
+
+.extra_buttons > button {
+  cursor: pointer;
+}

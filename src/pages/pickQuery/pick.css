@@ -1,0 +1,35 @@
+.queriesPage {
+  display: flex;
+  flex-direction: column;
+}
+
+.queriesPage_middle {
+  display: flex;
+  align-items: center;
+  height: 60px;
+  background-color: #3e9eca24;
+  padding-left: 30px;
+}
+
+.createQueryBtn {
+  border: none;
+  padding: 5px;
+  border-radius: 5px;
+  cursor: pointer;
+  border: 1px solid #3e9eca84;
+  font-size: 18px;
+  background-color: rgb(255, 255, 255);
+}
+
+.queryMapper {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  overflow-y: scroll;
+  height: 80vh;
+  /* border: 2px solid red; */
+}
+
+.query_display_pick {
+  padding: 20px;
+}

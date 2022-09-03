@@ -1,23 +1,20 @@
-import logo from './logo.svg';
-import './App.css';
+import { Routes, Route } from "react-router-dom";
+import QueriesPage from "./pages/queriesPage/QueriesPage";
+import CreateQueryPage from "./pages/createQueryPage/CreateQueryPage";
+import SingleQueryPage from "./pages/singleQueryPage/SingleQueryPage";
+import Login from "./pages/loginPage/Login";
+import Pick from "./pages/pickQuery/Pick";
 
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <Routes>
+        <Route path="/" element={<Login />} />
+        <Route path="/queries" element={<QueriesPage />} />
+        <Route path="/create" element={<CreateQueryPage />} />
+        <Route path="/query/:queryNo" element={<SingleQueryPage />} />
+        <Route path="/pick_new_query" element={<Pick />} />
+      </Routes>
     </div>
   );
 }

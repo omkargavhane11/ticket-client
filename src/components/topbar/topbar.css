@@ -1,0 +1,49 @@
+.queriesPage_top {
+  padding: 0px 30px;
+  height: 70px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.pageHeading {
+  font-size: 30px;
+}
+
+.user_avatar {
+  display: flex;
+  align-items: center;
+}
+
+.username {
+  margin-right: 10px;
+}
+
+.user_image {
+  height: 30px;
+  width: 30px;
+  border-radius: 50%;
+  border: 1px solid gray;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  cursor: pointer;
+}
+
+.logout_modal {
+  position: absolute;
+  background-color: white;
+  border: 1px solid gray;
+  /* padding: 5px; */
+  border-radius: 3px;
+  right: 40px;
+  top: 50px;
+  width: 100px;
+}
+.modal_item {
+  padding: 2px 4px;
+  cursor: pointer;
+}
+.modal_item:hover {
+  background-color: lightgray;
+}

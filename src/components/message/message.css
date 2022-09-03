@@ -1,0 +1,48 @@
+.message {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding: 4px;
+  align-items: flex-start;
+  text-align: left;
+}
+
+.messageOwn {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding: 4px;
+  align-items: flex-end;
+  text-align: right;
+}
+
+.message .messageWrapper_content {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  max-width: 70%;
+  width: fit-content;
+  background-color: rgb(237, 235, 235);
+  padding: 5px;
+  border-radius: 5px;
+  text-align: left;
+  align-items: flex-start;
+}
+
+.messageOwn .messageWrapper_content {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  max-width: 70%;
+  width: fit-content;
+  background-color: rgb(255, 255, 255);
+  padding: 5px;
+  border-radius: 5px;
+  text-align: right;
+  align-items: flex-end;
+}
+
+.msg_timeStamp {
+  color: gray;
+  font-size: 14px;
+}
