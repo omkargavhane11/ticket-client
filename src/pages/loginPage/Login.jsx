@@ -58,10 +58,10 @@ const Login = () => {
             onChange={(e) => setPassword(e.target.value)}
           />
         </div>
-        <button className="loginBtn" onClick={handleLogin}>
+        <button className="loginBtn loginBox_btn" onClick={handleLogin}>
           Login
         </button>
-        <button className="signupBtn">Sign-up</button>
+        <button className="signupBtn loginBox_btn">Sign up</button>
       </div>
     </div>
   );

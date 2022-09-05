@@ -14,7 +14,7 @@ const SingleQueryPage = () => {
   const navigate = useNavigate();
   const user = useSelector((state) => state.currentUser);
   const { queryNo } = useParams();
-  const socket = useRef(io("ws://localhost:8900"));
+  const socket = useRef();
   const [open, setOpen] = useState(false);
   const [messages, setMessages] = useState([]);
   const [arrivalMessage, setArrivalMessage] = useState(null);
@@ -23,46 +23,47 @@ const SingleQueryPage = () => {
   const [queryDetail, setQueryDetail] = useState("");
 
   const scrollRef = useRef();
-
+  // console.log(Math.random().toString());
   useEffect(() => {
     scrollRef.current?.scrollIntoView({ behavior: "smooth" });
   }, [messages]);
 
   useEffect(() => {
-    socket.current.emit("addQuery", (user._id, queryNo));
-    // socket.current.on("getQueries", (queries) => {
-    //   console.log(queries);
-    // });
+    socket.current?.emit("addQuery", (user._id, queryNo));
+    socket.current?.on("getUsers", (users) => {
+      console.log(users);
+    });
   }, [queryNo]);
 
   useEffect(() => {
     socket.current = io("ws://localhost:8900");
 
-    // socket.on("getMessage", (data) => {
-    //   setArrivalMessage({
-    //     senderId: data.senderId,
-    //     queryId: data.queryId,
-    //     message: data.message,
-    //     createAt: Date.now(),
-    //   });
-    // });
+    socket.current.on("getMessage", (data) => {
+      setArrivalMessage({
+        senderId: data.senderId,
+        queryId: data.queryId,
+        message: data.message,
+        createdAt: Date.now(),
+        _id: Math.random().toString(),
+      });
+    });
   }, []);
 
-  // useEffect(() => {
-  //   arrivalMessage &&
-  //     arrivalMessage.queryId === queryNo &&
-  //     setMessages([...messages, arrivalMessage]);
-  // }, [arrivalMessage, queryNo]);
+  useEffect(() => {
+    arrivalMessage &&
+      arrivalMessage.queryId === queryNo &&
+      setMessages([...messages, arrivalMessage]);
+  }, [arrivalMessage, queryNo]);
 
-  // ▫▫🚀🚀😁
+  // ▫▫🚀🚀
   const sendMessage = async () => {
     // socket
-    // socket.current.emit("sendMessage", {
-    //   senderId: user._id,
-    //   recieverId: queryDetail.assignedTo,
-    //   queryId: queryNo,
-    //   message: inputMsg,
-    // });
+    socket.current.emit("sendMessage", {
+      senderId: user._id,
+      recieverId: queryDetail.assignedTo,
+      queryId: queryNo,
+      message: inputMsg,
+    });
 
     // to db
     const payload = {
@@ -79,26 +80,28 @@ const SingleQueryPage = () => {
       console.log(sendMsg);
       setMessages([...messages, inputMsg]);
       setInputMsg("");
+      getData();
     } else {
       alert("enter something to send msg");
     }
   };
 
+  async function getData() {
+    // get query conversation
+    const { data } = await axios.get(
+      `http://localhost:8080/api/messages/${queryNo}`
+    );
+    setMessages(data);
+    console.log(data);
+
+    // get query details
+    const queryDetail = await axios.get(
+      `http://localhost:8080/api/query/single/${queryNo}`
+    );
+    setQueryDetail(queryDetail.data);
+  }
+
   useEffect(() => {
-    async function getData() {
-      // get query conversation
-      const { data } = await axios.get(
-        `http://localhost:8080/api/messages/${queryNo}`
-      );
-      setMessages(data);
-
-      // get query details
-      const queryDetail = await axios.get(
-        `http://localhost:8080/api/query/single/${queryNo}`
-      );
-      setQueryDetail(queryDetail.data);
-    }
-
     if (user !== null) {
       getData();
     } else {

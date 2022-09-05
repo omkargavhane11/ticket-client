@@ -174,7 +174,10 @@ const QueryForm = () => {
 
             {/* bottom_buttons */}
             <div className="submit">
-              <button className="cancel_btn" onClick={() => navigate("/")}>
+              <button
+                className="cancel_btn"
+                onClick={() => navigate("/queries")}
+              >
                 Cancel
               </button>
               <button className="create_btn" onClick={createQuery}>
