@@ -36,7 +36,7 @@ const SingleQueryPage = () => {
   }, [queryNo]);
 
   useEffect(() => {
-    socket.current = io("ws://localhost:8900");
+    socket.current = io("https://myticket77-socket.herokuapp.com/");
 
     socket.current.on("getMessage", (data) => {
       setArrivalMessage({
