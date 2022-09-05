@@ -27,9 +27,27 @@
   gap: 10px;
   overflow-y: scroll;
   height: 80vh;
-  /* border: 2px solid red; */
 }
 
 .query_display_pick {
   padding: 20px;
+  /* background-color: red; */
+}
+
+@media only screen and (max-width: 400px) {
+  .query_display_pick {
+    display: flex;
+    justify-content: center;
+    padding: 3px 0px;
+    width: 100vw;
+  }
+
+  .queryMapper {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    overflow-y: scroll;
+    height: 80vh;
+    margin-top: 10px;
+  }
 }

@@ -13,14 +13,14 @@ const QueriesPage = () => {
 
   async function getQueryData() {
     try {
-      if (user.role === "mentor") {
+      if (user?.role === "mentor") {
         const { data } = await axios.get(
-          `http://localhost:8080/api/query/mentor/${user._id}`
+          `https://myticket77.herokuapp.com/api/query/mentor/${user._id}`
         );
         setQueriesData(data);
       } else {
         const queries = await axios.get(
-          `http://localhost:8080/api/query/student/${user._id}`
+          `https://myticket77.herokuapp.com/api/query/student/${user._id}`
         );
         setQueriesData(queries.data);
       }
@@ -30,7 +30,7 @@ const QueriesPage = () => {
   }
 
   useEffect(() => {
-    if (user) {
+    if (user !== null) {
       getQueryData();
     } else {
       navigate("/");
@@ -41,7 +41,7 @@ const QueriesPage = () => {
     <div className="queriesPage">
       <Topbar />
       <div className="queriesPage_middle">
-        {user.role === "student" ? (
+        {user?.role === "student" ? (
           <button
             className="createQueryBtn"
             onClick={() => navigate("/create")}
@@ -56,6 +56,11 @@ const QueriesPage = () => {
             Pick New Queries
           </button>
         )}
+        <div className="dashboard">
+          U: {queriesData.filter((q) => q.status === "unassigned").length} | A:{" "}
+          {queriesData.filter((q) => q.status === "assigned").length} | C:{" "}
+          {queriesData.filter((q) => q.status === "closed").length}
+        </div>
       </div>
       <div className="queriesPage_bottom">
         <div className="queriesPage_bottom_left">

@@ -50,7 +50,7 @@ const QueryForm = () => {
         alert("Please fill all details");
       } else {
         const newQuery = await axios.post(
-          "http://localhost:8080/api/query",
+          "https://myticket77.herokuapp.com/api/query",
           queryInfo
         );
         console.log(newQuery);
@@ -101,7 +101,7 @@ const QueryForm = () => {
                 </option>
               </select>
 
-              <div className="topic_category_label">
+              <div className="topic_category_label language_input_select">
                 Preferred Voice Communication Language
               </div>
               <select

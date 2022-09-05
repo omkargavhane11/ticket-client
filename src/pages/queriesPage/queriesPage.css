@@ -87,7 +87,7 @@ hr {
 .queriesPage_middle {
   display: flex;
   align-items: center;
-  height: 60px;
+  /* height: 60px; */
   background-color: #3e9eca24;
   padding-left: 30px;
 }
@@ -100,4 +100,33 @@ hr {
   border: 1px solid #3e9eca84;
   font-size: 18px;
   background-color: white;
+  /* height: 50px; */
+  text-align: center;
+}
+
+@media only screen and (max-width: 400px) {
+  .queriesPage_bottom {
+    display: flex;
+    gap: 10px;
+    margin-top: 10px;
+    padding: 0px 5px !important;
+  }
+
+  .queriesPage_bottom_left {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    gap: 10px;
+  }
+  .queriesPage_middle {
+    display: flex;
+    align-items: center;
+    height: 60px;
+    background-color: #3e9eca24;
+    padding-left: 8px !important;
+  }
+  /* .queriesPage_middle > button {
+    height: 40px;
+  } */
 }

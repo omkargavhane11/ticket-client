@@ -14,7 +14,9 @@ const Pick = () => {
   async function getQueryData() {
     try {
       if (user.role === "mentor") {
-        const { data } = await axios.get(`http://localhost:8080/api/query`);
+        const { data } = await axios.get(
+          `https://myticket77.herokuapp.com/api/query`
+        );
         let unAssignedQueries = data.filter((query) => {
           return query.status === "unassigned";
         });

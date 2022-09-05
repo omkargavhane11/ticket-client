@@ -1,7 +1,7 @@
 .queryBox {
   /* border: 1px solid gray; */
   height: max-content;
-  width: 50%;
+  width: 80vw;
   border-radius: 5px;
   font-size: 18px;
   text-align: left;
@@ -76,4 +76,19 @@
 
 .extra_buttons > button {
   cursor: pointer;
+}
+
+@media only screen and (max-width: 400px) {
+  .queryBox {
+    height: max-content;
+    width: 91vw;
+    border-radius: 5px;
+    font-size: 18px;
+    text-align: left;
+    border: 1px solid rgb(215, 213, 213);
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
 }

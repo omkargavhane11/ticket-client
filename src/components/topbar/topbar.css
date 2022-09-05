@@ -38,12 +38,31 @@
   border-radius: 3px;
   right: 40px;
   top: 50px;
-  width: 100px;
+  width: 130px;
 }
 .modal_item {
   padding: 2px 4px;
   cursor: pointer;
+  height: 30px;
+  font-size: 16px;
 }
 .modal_item:hover {
   background-color: lightgray;
+}
+
+@media only screen and (max-width: 400px) {
+  .queriesPage_top {
+    padding: 0px 10px !important;
+    height: 50px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .pageHeading {
+    font-size: 24px !important;
+  }
+  .username {
+    margin-right: 10px;
+    display: none;
+  }
 }

@@ -168,7 +168,7 @@ hr {
 
 .messageInputBox {
   display: flex;
-  align-items: center;
+  align-items: baseline;
   justify-content: space-between;
   border-radius: 4px;
   padding: 0px 10px;
@@ -288,4 +288,31 @@ hr {
   background-color: lightgray;
   border-radius: 4px;
   cursor: pointer;
+}
+
+@media only screen and (max-width: 400px) {
+  .queriesPage_bottom_right {
+    display: none !important;
+  }
+  .messageMapper {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    overflow-y: scroll;
+    height: 65vh;
+    padding: 15px;
+    background-color: rgba(240, 240, 240, 0.389);
+    border: 1px solid lightgray;
+    /* padding-top: 10px !important; */
+  }
+  .messageInputBox {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    border-radius: 4px;
+    padding: 0px;
+    height: 40px;
+    gap: 3px;
+    margin-top: 5px;
+  }
 }
