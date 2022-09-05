@@ -28,7 +28,7 @@ const SingleQueryPage = () => {
   }, [messages]);
 
   useEffect(() => {
-    socket.current = io("ws://localhost:8900");
+    socket.current = io("https://myticket77-socket.herokuapp.com");
 
     socket.current.on("getMessage", (data) => {
       setArrivalMessage({
@@ -54,17 +54,7 @@ const SingleQueryPage = () => {
       setMessages([...messages, arrivalMessage]);
   }, [arrivalMessage, queryNo]);
 
-  // ▫▫🚀🚀
   const sendMessage = async () => {
-    // socket
-    socket.current.emit("sendMessage", {
-      senderId: user._id,
-      recieverId:
-        user.role !== "mentor" ? queryDetail.assignedTo : queryDetail.createdBy,
-      queryId: queryNo,
-      message: inputMsg,
-    });
-
     // to db
     const payload = {
       senderId: user._id,
@@ -74,9 +64,20 @@ const SingleQueryPage = () => {
 
     if (inputMsg !== null || inputMsg !== "") {
       const sendMsg = await axios.post(
-        "http://localhost:8080/api/messages",
+        "https://myticket77.herokuapp.com/api/messages",
         payload
       );
+
+      // socket 🚀🚀
+      socket.current.emit("sendMessage", {
+        senderId: user._id,
+        recieverId:
+          user.role !== "mentor"
+            ? queryDetail.assignedTo
+            : queryDetail.createdBy,
+        queryId: queryNo,
+        message: inputMsg,
+      });
 
       setMessages([
         ...messages,
@@ -97,13 +98,13 @@ const SingleQueryPage = () => {
   async function getData() {
     // get query conversation
     const { data } = await axios.get(
-      `http://localhost:8080/api/messages/${queryNo}`
+      `https://myticket77.herokuapp.com/api/messages/${queryNo}`
     );
     setMessages(data);
 
     // get query details
     const queryDetail = await axios.get(
-      `http://localhost:8080/api/query/single/${queryNo}`
+      `https://myticket77.herokuapp.com/api/query/single/${queryNo}`
     );
     setQueryDetail(queryDetail.data);
   }
@@ -131,13 +132,13 @@ const SingleQueryPage = () => {
     if (feedback !== (null || "")) {
       if (user.role === "student") {
         const { data } = await axios.put(
-          `http://localhost:8080/api/query/update/${queryNo}`,
+          `https://myticket77.herokuapp.com/api/query/update/${queryNo}`,
           studentPayload
         );
         console.log(data);
       } else {
         const { data } = await axios.put(
-          `http://localhost:8080/api/query/update/${queryNo}`,
+          `https://myticket77.herokuapp.com/api/query/update/${queryNo}`,
           mentorPayload
         );
         console.log(data);
