@@ -29,14 +29,14 @@ const SingleQueryPage = () => {
   }, [messages]);
 
   useEffect(() => {
-    socket.current?.emit("addQuery", (user._id, queryNo));
+    socket.current?.emit("addQuery", user._id);
     socket.current?.on("getUsers", (users) => {
       console.log(users);
     });
-  }, [queryNo]);
+  }, [user]);
 
   useEffect(() => {
-    socket.current = io("https://myticket77-socket.herokuapp.com/");
+    socket.current = io("https://myticket77-socket.herokuapp.com");
 
     socket.current.on("getMessage", (data) => {
       setArrivalMessage({
