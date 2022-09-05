@@ -14,6 +14,8 @@ const QueryForm = () => {
   const [fromData, setFromDate] = useState(null);
   const [toDate, setToDate] = useState(null);
 
+  // console.log("QN" + (1000 + 5));
+
   const handleCategoryChange = () => {
     const options = document.getElementsByClassName("topic_category_value");
     for (let i = 0; i < options.length; i++) {
