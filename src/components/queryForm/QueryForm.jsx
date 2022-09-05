@@ -35,7 +35,9 @@ const QueryForm = () => {
   };
 
   const createQuery = async () => {
-    const getCount = await axios.get("http://localhost:8080/api/query");
+    const getCount = await axios.get(
+      "https://myticket77.herokuapp.com/api/query"
+    );
 
     const queryInfo = {
       createdBy: user._id,
@@ -56,7 +58,7 @@ const QueryForm = () => {
         alert("Please fill all details");
       } else {
         const newQuery = await axios.post(
-          "http://localhost:8080/api/query",
+          "https://myticket77.herokuapp.com/api/query",
           queryInfo
         );
         console.log(newQuery);

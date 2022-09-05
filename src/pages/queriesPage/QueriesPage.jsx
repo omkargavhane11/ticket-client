@@ -15,12 +15,12 @@ const QueriesPage = () => {
     try {
       if (user?.role === "mentor") {
         const { data } = await axios.get(
-          `http://localhost:8080/api/query/mentor/${user._id}`
+          `https://myticket77.herokuapp.com/api/query/mentor/${user._id}`
         );
         setQueriesData(data);
       } else {
         const queries = await axios.get(
-          `http://localhost:8080/api/query/student/${user._id}`
+          `https://myticket77.herokuapp.com/api/query/student/${user._id}`
         );
         setQueriesData(queries.data);
       }
