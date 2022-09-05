@@ -22,6 +22,7 @@ const QueryForm = () => {
       }
     }
   };
+
   const handleLanguageChange = () => {
     const options = document.getElementsByClassName("topic_language_value");
     for (let i = 0; i < options.length; i++) {
@@ -32,6 +33,9 @@ const QueryForm = () => {
   };
 
   const createQuery = async () => {
+    const getCount = await axios.get(
+      "https://myticket77.herokuapp.com/api/query"
+    );
     const queryInfo = {
       createdBy: user._id,
       category: category,
@@ -40,9 +44,11 @@ const QueryForm = () => {
       queryDescription: description,
       preferredTimeFrom: fromData,
       preferredTimeTo: toDate,
+      queryNo: "QN" + (1000 + getCount.length),
     };
 
     try {
+      // console.log(getCount.length);
       if (
         (category || language || title || description || fromData || toDate) ===
         null
