@@ -33,7 +33,7 @@ const SingleQueryPage = () => {
     socket.current?.on("getUsers", (users) => {
       console.log(users);
     });
-  }, [user]);
+  }, [queryNo]);
 
   useEffect(() => {
     socket.current = io("https://myticket77-socket.herokuapp.com");
