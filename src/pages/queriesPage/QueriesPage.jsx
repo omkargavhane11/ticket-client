@@ -64,11 +64,15 @@ const QueriesPage = () => {
       </div>
       <div className="queriesPage_bottom">
         <div className="queriesPage_bottom_left">
-          <div className="queryMapper">
-            {queriesData?.map((data) => (
-              <QueryBox key={data._id} query={data} />
-            ))}
-          </div>
+          {queriesData.length > 0 ? (
+            <div className="queryMapper">
+              {queriesData?.map((data) => (
+                <QueryBox key={data._id} query={data} />
+              ))}
+            </div>
+          ) : (
+            <h1 className="noQuery">No queries to display</h1>
+          )}
         </div>
       </div>
     </div>
