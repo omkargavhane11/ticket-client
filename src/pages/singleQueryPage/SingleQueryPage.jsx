@@ -29,7 +29,7 @@ const SingleQueryPage = () => {
   }, [messages]);
 
   useEffect(() => {
-    socket.current?.emit("addQuery", user._id);
+    socket.current?.emit("addUser", user._id);
     socket.current?.on("getUsers", (users) => {
       console.log(users);
     });
