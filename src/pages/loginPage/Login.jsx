@@ -2,14 +2,16 @@ import "./login.css";
 import { useNavigate } from "react-router-dom";
 import { useState } from "react";
 import axios from "axios";
-import { useDispatch } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 import { loginStart, loginSuccess } from "../../redux/user";
+import CircularProgress from "@mui/material/CircularProgress";
 
 const Login = () => {
   const navigate = useNavigate();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const dispatch = useDispatch();
+  const user = useSelector((state) => state);
 
   const handleLogin = async () => {
     const payload = {
@@ -59,7 +61,11 @@ const Login = () => {
           />
         </div>
         <button className="loginBtn loginBox_btn" onClick={handleLogin}>
-          Login
+          {user.isFetching ? (
+            <CircularProgress className="circular_progress" />
+          ) : (
+            "Login"
+          )}
         </button>
         <button className="signupBtn loginBox_btn">Sign up</button>
       </div>
