@@ -4,7 +4,10 @@ import { useState } from "react";
 import axios from "axios";
 import { useSelector } from "react-redux";
 import Topbar from "../topbar/Topbar";
+import { useToast } from "@chakra-ui/react";
+
 const QueryForm = () => {
+  const toast = useToast();
   const navigate = useNavigate();
   const user = useSelector((state) => state.currentUser);
   const [category, setCategory] = useState(null);
@@ -55,13 +58,30 @@ const QueryForm = () => {
         (category || language || title || description || fromData || toDate) ===
         null
       ) {
-        alert("Please fill all details");
+        // alert("Please fill all details");
+        toast({
+          title: "Error.",
+          description: "Please fill all details.",
+          status: "error",
+          duration: 2000,
+          isClosable: true,
+          position: "top",
+        });
       } else {
         const newQuery = await axios.post(
           "https://myticket77.herokuapp.com/api/query",
           queryInfo
         );
         console.log(newQuery);
+        toast({
+          title: "Query created.",
+          // description: "We've created your account for you.",
+          status: "success",
+          duration: 2000,
+          isClosable: true,
+          position: "top",
+        });
+        navigate("/queries");
       }
     } catch (error) {
       console.log(error.message);

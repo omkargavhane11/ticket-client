@@ -57,7 +57,7 @@
   text-align: center;
   height: max-content;
   border: none;
-  font-size: 18px;
+  font-size: 16px;
   width: 70%;
 }
 .queriesPage_bottom_right_top {
@@ -290,10 +290,38 @@ hr {
   cursor: pointer;
 }
 
+.chatNotAvailable {
+  color: lightgray;
+}
+
+.createdAt_key,
+.assignedTo_key,
+.description_key {
+  color: rgb(167, 167, 167);
+}
+
 @media only screen and (max-width: 400px) {
-  .queriesPage_bottom_right {
+  /* .queriesPage_bottom_right {
     display: none !important;
+  } */
+  .queriesPage_bottom_right {
+    /* flex: 0.8; */
+    padding: 10px;
+    text-align: center;
+    height: max-content;
+    border: none;
+    font-size: 18px;
+    width: 90vw;
+    margin-top: 50px;
   }
+  .queriesPage_bottom {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-top: 10px;
+    padding: 0px 30px;
+  }
+
   .messageMapper {
     display: flex;
     flex-direction: column;

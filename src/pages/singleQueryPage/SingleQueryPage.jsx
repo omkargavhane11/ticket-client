@@ -9,6 +9,7 @@ import { useSelector } from "react-redux";
 import Topbar from "../../components/topbar/Topbar";
 import { useRef } from "react";
 import { io } from "socket.io-client";
+import Moment from "react-moment";
 
 const SingleQueryPage = () => {
   const navigate = useNavigate();
@@ -210,17 +211,23 @@ const SingleQueryPage = () => {
               <div className="closedQueryBtn">Closed</div>
             )}
           </div>
-          <div className="messageMapper">
-            {messages.map((msg) => (
-              <div ref={scrollRef} key={msg._id}>
-                <Message
-                  self={msg.senderId === user._id}
-                  msg={msg}
-                  key={msg._id}
-                />
-              </div>
-            ))}
-          </div>
+          {queryDetail.status !== "unassigned" ? (
+            <div className="messageMapper">
+              {messages.map((msg) => (
+                <div ref={scrollRef} key={msg._id}>
+                  <Message
+                    self={msg.senderId === user._id}
+                    msg={msg}
+                    key={msg._id}
+                  />
+                </div>
+              ))}
+            </div>
+          ) : (
+            <div className="messageMapper">
+              <h2 className="chatNotAvailable">Query is not assigned yet !</h2>
+            </div>
+          )}
           {queryDetail.status === "assigned" && !queryDetail.closedByMentor && (
             <div className="messageInputBox">
               <input
@@ -239,7 +246,7 @@ const SingleQueryPage = () => {
           <div className="queriesPage_bottom_right_top">
             <div className="querie_desc_top">
               <div className="q_desc_top_left">
-                <div className="queryNo">{queryDetail._id}</div>
+                <div className="queryNo">#{queryDetail.queryNo}</div>
                 <div className="queryTitle">{queryDetail.queryTitle}</div>
               </div>
               <div className={queryDetail.status}>{queryDetail.status}</div>
@@ -248,11 +255,18 @@ const SingleQueryPage = () => {
             <div className="q_desc_bottom_top">
               <div className="createdAt">
                 <div className="createdAt_key">Created at:</div>
-                <div className="createdAt_value">{queryDetail.createdAt}</div>
+                <Moment
+                  format="DD/MM/YYYY,  HH:MM:SS"
+                  className="createdAt_value"
+                >
+                  {queryDetail.createdAt}
+                </Moment>
               </div>
               <div className="assignedTo">
                 <div className="assignedTo_key">Assigned to:</div>
-                <div className="assignedTo_value">{queryDetail.assignedTo}</div>
+                <div className="assignedTo_value">
+                  {queryDetail.assignedTo === "" ? "-" : ""}
+                </div>
               </div>
             </div>
             <div className="description">

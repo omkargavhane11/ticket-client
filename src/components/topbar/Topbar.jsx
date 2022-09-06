@@ -16,12 +16,15 @@ const Topbar = () => {
     navigate("/");
   };
 
+  const username = user.name.split(" ")[0];
+
   return (
     <>
       <div className="queriesPage_top">
         <h3 className="pageHeading">My Queries</h3>
         <div className="user_avatar">
           <span className="username">{user?.name}</span>
+          <span className="firstname">{username}</span>
           <img
             src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR-vWL06qbKx_pfPr-bFrIjw1t7y5ogYgIiNITgPVmXcHS6DSN3T793hhNAWRngBnR3dec&usqp=CAU"
             alt="user"

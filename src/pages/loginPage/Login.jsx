@@ -3,10 +3,12 @@ import { useNavigate } from "react-router-dom";
 import { useState } from "react";
 import axios from "axios";
 import { useSelector, useDispatch } from "react-redux";
-import { loginStart, loginSuccess } from "../../redux/user";
+import { loginFailure, loginStart, loginSuccess } from "../../redux/user";
 import CircularProgress from "@mui/material/CircularProgress";
+import { useToast } from "@chakra-ui/react";
 
 const Login = () => {
+  const toast = useToast();
   const navigate = useNavigate();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -19,21 +21,41 @@ const Login = () => {
       password,
     };
 
-    try {
-      dispatch(loginStart);
-      const { data } = await axios.post(
-        "https://myticket77.herokuapp.com/api/authentication/login",
-        payload
-      );
+    if (email === "" || password === "") {
+      toast({
+        title: "Error.",
+        description: "Please fill all fields to login",
+        status: "warning",
+        duration: 2000,
+        isClosable: true,
+        position: "top",
+      });
+    } else {
+      try {
+        dispatch(loginStart);
+        const { data } = await axios.post(
+          "https://myticket77.herokuapp.com/api/authentication/login",
+          payload
+        );
 
-      if (data.msg === "success") {
-        dispatch(loginSuccess(data.user));
-        navigate("/queries");
-      } else {
-        alert("Invalid credentials");
+        if (data.msg === "success") {
+          dispatch(loginSuccess(data.user));
+          navigate("/queries");
+        } else {
+          // alert("Invalid credentials");
+          toast({
+            title: "Error.",
+            description: "Invalid credentials.",
+            status: "error",
+            duration: 2000,
+            isClosable: true,
+            position: "top",
+          });
+          dispatch(loginFailure);
+        }
+      } catch (error) {
+        console.log(error.message);
       }
-    } catch (error) {
-      console.log(error.message);
     }
   };
 

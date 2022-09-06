@@ -49,6 +49,9 @@
 .modal_item:hover {
   background-color: lightgray;
 }
+.firstname {
+  display: none;
+}
 
 @media only screen and (max-width: 400px) {
   .queriesPage_top {
@@ -64,5 +67,10 @@
   .username {
     margin-right: 10px;
     display: none;
+  }
+  .firstname {
+    display: block;
+    margin-right: 10px;
+    font-size: 18px !important;
   }
 }

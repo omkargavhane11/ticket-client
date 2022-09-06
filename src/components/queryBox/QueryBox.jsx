@@ -27,7 +27,7 @@ const QueryBox = ({ query }) => {
     <div className="queryBox">
       <div className="queryBox_top">
         <div className="queryBox_top_left">
-          <div className="queryNo">{query._id}</div>
+          <div className="queryNo">#{query.queryNo}</div>
           <div className="queryCategory">{query.category}</div>
         </div>
         <div className="queryBox_top_right">
