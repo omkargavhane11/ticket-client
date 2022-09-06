@@ -296,16 +296,22 @@ hr {
 
 .createdAt_key,
 .assignedTo_key,
-.description_key {
+.description_key,
+.student_feedback_key,
+.mentor_Solution_key {
   color: rgb(167, 167, 167);
 }
 
+.student_feedback_key {
+  margin-top: 10px;
+}
+
 @media only screen and (max-width: 400px) {
-  /* .queriesPage_bottom_right {
-    display: none !important;
-  } */
   .queriesPage_bottom_right {
-    /* flex: 0.8; */
+    display: none !important;
+  }
+  /* .queriesPage_bottom_right {
+    flex: 0.8;
     padding: 10px;
     text-align: center;
     height: max-content;
@@ -313,7 +319,7 @@ hr {
     font-size: 18px;
     width: 90vw;
     margin-top: 50px;
-  }
+  } */
   .queriesPage_bottom {
     display: flex;
     flex-direction: column;
@@ -327,7 +333,7 @@ hr {
     flex-direction: column;
     gap: 5px;
     overflow-y: scroll;
-    height: 65vh;
+    height: 70vh;
     padding: 15px;
     background-color: rgba(240, 240, 240, 0.389);
     border: 1px solid lightgray;

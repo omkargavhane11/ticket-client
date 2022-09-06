@@ -2,8 +2,10 @@ import "./queryBox.css";
 import { useNavigate } from "react-router-dom";
 import { useSelector } from "react-redux";
 import axios from "axios";
+import { useToast } from "@chakra-ui/react";
 
 const QueryBox = ({ query }) => {
+  const toast = useToast();
   const navigate = useNavigate();
   const user = useSelector((state) => state.currentUser);
 
@@ -17,7 +19,15 @@ const QueryBox = ({ query }) => {
         "https://myticket77.herokuapp.com/api/query/pick",
         payload
       );
-      console.log(pick.data);
+      // console.log(pick.data);
+      toast({
+        title: "Query Assigned",
+        description: `${pick.data.queryNo} has been assigned to you successfully`,
+        status: "success",
+        duration: 3000,
+        isClosable: true,
+        position: "top",
+      });
     } catch (error) {
       console.log(error.message);
     }

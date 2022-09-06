@@ -26,7 +26,7 @@ const Login = () => {
         title: "Error.",
         description: "Please fill all fields to login",
         status: "warning",
-        duration: 2000,
+        duration: 3000,
         isClosable: true,
         position: "top",
       });
@@ -43,15 +43,15 @@ const Login = () => {
           navigate("/queries");
         } else {
           // alert("Invalid credentials");
+          dispatch(loginFailure);
           toast({
             title: "Error.",
             description: "Invalid credentials.",
             status: "error",
-            duration: 2000,
+            duration: 3000,
             isClosable: true,
             position: "top",
           });
-          dispatch(loginFailure);
         }
       } catch (error) {
         console.log(error.message);

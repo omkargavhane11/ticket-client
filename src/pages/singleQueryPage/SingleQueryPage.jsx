@@ -282,12 +282,12 @@ const SingleQueryPage = () => {
               <div className="feedback">
                 <div className="mentor_Solution_key">Solution by Mentor</div>
                 <div className="mentor_Solution_value">
-                  Check the solution on documentaion of redux.
+                  {queryDetail.solution === "" ? " - " : queryDetail.solution}
                 </div>
                 <hr />
                 <div className="student_feedback_key">Your Feedback</div>
                 <div className="student_feedback_value">
-                  Got the required solution
+                  {queryDetail.feedback}
                 </div>
               </div>
             </div>

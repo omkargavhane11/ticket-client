@@ -17,7 +17,7 @@ const QueryForm = () => {
   const [fromData, setFromDate] = useState(null);
   const [toDate, setToDate] = useState(null);
 
-  // console.log("QN" + (1000 + 5));
+  console.log(window.location.pathname);
 
   const handleCategoryChange = () => {
     const options = document.getElementsByClassName("topic_category_value");
@@ -61,9 +61,9 @@ const QueryForm = () => {
         // alert("Please fill all details");
         toast({
           title: "Error.",
-          description: "Please fill all details.",
-          status: "error",
-          duration: 2000,
+          description: "Please fill all details to create query",
+          status: "warning",
+          duration: 3000,
           isClosable: true,
           position: "top",
         });
@@ -77,7 +77,7 @@ const QueryForm = () => {
           title: "Query created.",
           // description: "We've created your account for you.",
           status: "success",
-          duration: 2000,
+          duration: 3000,
           isClosable: true,
           position: "top",
         });

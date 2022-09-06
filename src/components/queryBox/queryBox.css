@@ -32,21 +32,21 @@
 .unassigned {
   color: rgba(180, 35, 35, 0.682);
   background-color: rgba(152, 22, 22, 0.068);
-  padding: 4px;
+  padding: 2px 4px;
   border-radius: 4px 6px;
   font-weight: normal;
 }
 .assigned {
   color: rgb(50, 149, 203);
   background-color: rgba(50, 149, 203, 0.164);
-  padding: 4px;
+  padding: 2px 4px;
   border-radius: 4px 6px;
   font-weight: normal;
 }
 .closed {
   color: rgb(3, 174, 3);
   background-color: rgba(0, 128, 0, 0.175);
-  padding: 4px;
+  padding: 2px 4px;
   border-radius: 4px 6px;
   font-weight: normal;
 }
@@ -81,7 +81,7 @@
 @media only screen and (max-width: 400px) {
   .queryBox {
     height: max-content;
-    width: 91vw;
+    width: 96vw;
     border-radius: 5px;
     font-size: 18px;
     text-align: left;

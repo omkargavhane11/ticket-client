@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import "./topbar.css";
 import { useNavigate } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
@@ -9,6 +9,30 @@ const Topbar = () => {
   const [open, setOpen] = useState(false);
   const navigate = useNavigate();
   const dispatch = useDispatch();
+  const [heading, setHeading] = useState("");
+
+  useEffect(() => {
+    function headingSet(pathname) {
+      switch (pathname) {
+        case "/queries":
+          setHeading("My Queries");
+          break;
+
+        case "/create":
+          setHeading("Create");
+          break;
+
+        case `/query/*`:
+          setHeading("Query");
+          break;
+
+        case `/pick_new_query`:
+          setHeading("Pick Query");
+          break;
+      }
+    }
+    headingSet(window.location.pathname);
+  }, []);
 
   const handleLogout = () => {
     dispatch(logout());
@@ -21,7 +45,7 @@ const Topbar = () => {
   return (
     <>
       <div className="queriesPage_top">
-        <h3 className="pageHeading">My Queries</h3>
+        <h3 className="pageHeading">{heading}</h3>
         <div className="user_avatar">
           <span className="username">{user?.name}</span>
           <span className="firstname">{username}</span>
