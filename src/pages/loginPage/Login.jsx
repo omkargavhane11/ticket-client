@@ -83,7 +83,7 @@ const Login = () => {
           />
         </div>
         <button className="loginBtn loginBox_btn" onClick={handleLogin}>
-          {user.isFetching ? (
+          {user.isFetching === true ? (
             <CircularProgress className="circular_progress" />
           ) : (
             "Login"
