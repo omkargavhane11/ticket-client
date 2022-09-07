@@ -5,6 +5,7 @@ import SingleQueryPage from "./pages/singleQueryPage/SingleQueryPage";
 import Login from "./pages/loginPage/Login";
 import Pick from "./pages/pickQuery/Pick";
 import { ChakraProvider } from "@chakra-ui/react";
+import Signup from "./pages/signup/Signup";
 
 function App() {
   return (
@@ -12,6 +13,7 @@ function App() {
       <ChakraProvider>
         <Routes>
           <Route path="/" element={<Login />} />
+          <Route path="/signup" element={<Signup />} />
           <Route path="/queries" element={<QueriesPage />} />
           <Route path="/create" element={<CreateQueryPage />} />
           <Route path="/query/:queryNo" element={<SingleQueryPage />} />
