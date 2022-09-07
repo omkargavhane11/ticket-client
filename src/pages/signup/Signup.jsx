@@ -65,6 +65,7 @@ const Signup = () => {
           });
         }
       } catch (error) {
+        setLoading(false);
         console.log(error.message);
       }
     }
@@ -124,10 +125,22 @@ const Signup = () => {
             onChange={(e) => setContact(e.target.value)}
           />
         </div>
-        <button className="signupBtn loginBox_btn" onClick={handleSignup}>
-          Sign up
+        <button
+          className="signupBtn loginBox_btn"
+          onClick={handleSignup}
+          disabled={loading}
+        >
+          {loading ? (
+            <CircularProgress color="inherit" className="login_loader" />
+          ) : (
+            "Sign up"
+          )}
         </button>
-        <button className="loginBtn loginBox_btn" onClick={() => navigate("/")}>
+        <button
+          className="loginBtn loginBox_btn"
+          onClick={() => navigate("/")}
+          disabled={loading}
+        >
           Login
         </button>
       </div>
