@@ -75,6 +75,7 @@ const Login = () => {
             name="email"
             placeholder="someone@example.com"
             onChange={(e) => setEmail(e.target.value)}
+            className="login_input"
           />
         </div>
         <div className="input">
@@ -85,6 +86,7 @@ const Login = () => {
             name="password"
             placeholder="pass@123"
             onChange={(e) => setPassword(e.target.value)}
+            className="login_input"
           />
         </div>
         <div className="checkbox">
@@ -102,6 +104,7 @@ const Login = () => {
           className="loginBtn loginBox_btn"
           onClick={handleLogin}
           disabled={loading}
+          id="login_btn"
         >
           {loading === true ? (
             <CircularProgress color="inherit" className="login_loader" />
