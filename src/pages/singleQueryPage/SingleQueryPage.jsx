@@ -75,7 +75,7 @@ const SingleQueryPage = () => {
       socket.current.emit("sendMessage", {
         senderId: user._id,
         recieverId:
-          queryDetail.createdBy !== user._id
+          user.role !== "mentor"
             ? queryDetail.assignedTo
             : queryDetail.createdBy,
         queryId: queryNo,
