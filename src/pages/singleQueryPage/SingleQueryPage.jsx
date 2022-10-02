@@ -23,6 +23,8 @@ const SingleQueryPage = () => {
   const [feedback, setFeedback] = useState("");
   const [queryDetail, setQueryDetail] = useState("");
 
+  console.log(queryDetail);
+
   const scrollRef = useRef();
   useEffect(() => {
     scrollRef.current?.scrollIntoView({ behavior: "smooth" });
@@ -73,7 +75,7 @@ const SingleQueryPage = () => {
       socket.current.emit("sendMessage", {
         senderId: user._id,
         recieverId:
-          user.role !== "mentor"
+          queryDetail.createdBy !== user._id
             ? queryDetail.assignedTo
             : queryDetail.createdBy,
         queryId: queryNo,
