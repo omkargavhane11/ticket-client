@@ -13,6 +13,7 @@ const Signup = () => {
   const [contact, setContact] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [role, setRole] = useState("student");
   //   const dispatch = useDispatch();
   const [loading, setLoading] = useState(false);
   const [isPass, setIsPass] = useState(false);
@@ -23,6 +24,7 @@ const Signup = () => {
       email,
       password,
       contactNo: contact,
+      role,
     };
 
     if (email === "" || password === "" || name === "" || contact === "") {
@@ -38,7 +40,7 @@ const Signup = () => {
       try {
         setLoading(true);
         const { data } = await axios.post(
-          "https://myticket77.herokuapp.com/api/user/register",
+          "http://localhost:8080/api/user/register",
           payload
         );
 
@@ -94,6 +96,18 @@ const Signup = () => {
             onChange={(e) => setEmail(e.target.value)}
           />
         </div>
+        <div className="input">
+          <label htmlFor="role">Role</label>
+          <select
+            id="role"
+            name="role"
+            onChange={(e) => setRole(e.target.value)}
+          >
+            <option value="student">Student</option>
+            <option value="Teacher">Teacher</option>
+          </select>
+        </div>
+
         <div className="input">
           <label htmlFor="password">Password</label>
           <input
