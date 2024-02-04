@@ -39,7 +39,7 @@ const QueryForm = () => {
 
   const createQuery = async () => {
     const getCount = await axios.get(
-      "https://myticket77.herokuapp.com/api/query"
+      "http://localhost:8080/api/query"
     );
 
     const queryInfo = {
@@ -69,7 +69,7 @@ const QueryForm = () => {
         });
       } else {
         const newQuery = await axios.post(
-          "https://myticket77.herokuapp.com/api/query",
+          "http://localhost:8080/api/query",
           queryInfo
         );
         console.log(newQuery);

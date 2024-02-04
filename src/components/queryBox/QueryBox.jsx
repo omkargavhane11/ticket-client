@@ -16,7 +16,7 @@ const QueryBox = ({ query }) => {
     };
     try {
       const pick = await axios.put(
-        "https://myticket77.herokuapp.com/api/query/pick",
+        "http://localhost:8080/api/query/pick",
         payload
       );
       // console.log(pick.data);

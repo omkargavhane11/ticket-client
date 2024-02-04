@@ -11,12 +11,12 @@ const Pick = () => {
   const navigate = useNavigate();
   const [queriesData, setQueriesData] = useState([]);
 
-  async function getQueryData() {
+  console.log("user :: ", user);
+
+  async function getQueryData() { 
     try {
       if (user.role === "mentor") {
-        const { data } = await axios.get(
-          `https://myticket77.herokuapp.com/api/query`
-        );
+        const { data } = await axios.get(`http://localhost:8080/api/query`);
         let unAssignedQueries = data.filter((query) => {
           return query.status === "unassigned";
         });

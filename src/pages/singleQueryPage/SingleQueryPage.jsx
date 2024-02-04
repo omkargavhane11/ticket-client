@@ -67,7 +67,7 @@ const SingleQueryPage = () => {
 
     if (inputMsg !== null || inputMsg !== "") {
       const sendMsg = await axios.post(
-        "https://myticket77.herokuapp.com/api/messages",
+        "http://localhost:8080/api/messages",
         payload
       );
 
@@ -101,13 +101,13 @@ const SingleQueryPage = () => {
   async function getData() {
     // get query conversation
     const { data } = await axios.get(
-      `https://myticket77.herokuapp.com/api/messages/${queryNo}`
+      `http://localhost:8080/api/messages/${queryNo}`
     );
     setMessages(data);
 
     // get query details
     const queryDetail = await axios.get(
-      `https://myticket77.herokuapp.com/api/query/single/${queryNo}`
+      `http://localhost:8080/api/query/single/${queryNo}`
     );
     setQueryDetail(queryDetail.data);
   }
@@ -135,13 +135,13 @@ const SingleQueryPage = () => {
     if (feedback !== (null || "")) {
       if (user.role === "student") {
         const { data } = await axios.put(
-          `https://myticket77.herokuapp.com/api/query/update/${queryNo}`,
+          `http://localhost:8080/api/query/update/${queryNo}`,
           studentPayload
         );
         console.log(data);
       } else {
         const { data } = await axios.put(
-          `https://myticket77.herokuapp.com/api/query/update/${queryNo}`,
+          `http://localhost:8080/api/query/update/${queryNo}`,
           mentorPayload
         );
         console.log(data);
