@@ -16,7 +16,7 @@ const QueryBox = ({ query }) => {
     };
     try {
       const pick = await axios.put(
-        "http://localhost:8080/api/query/pick",
+        "https://ticket-api-production-610a.up.railway.app/api/query/pick",
         payload
       );
       // console.log(pick.data);

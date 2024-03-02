@@ -16,7 +16,7 @@ const Pick = () => {
   async function getQueryData() { 
     try {
       if (user.role === "mentor") {
-        const { data } = await axios.get(`http://localhost:8080/api/query`);
+        const { data } = await axios.get(`https://ticket-api-production-610a.up.railway.app/api/query`);
         let unAssignedQueries = data.filter((query) => {
           return query.status === "unassigned";
         });

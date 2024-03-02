@@ -40,7 +40,7 @@ const Signup = () => {
       try {
         setLoading(true);
         const { data } = await axios.post(
-          "http://localhost:8080/api/user/register",
+          "https://ticket-api-production-610a.up.railway.app/api/user/register",
           payload
         );
 

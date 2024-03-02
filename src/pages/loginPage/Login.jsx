@@ -37,7 +37,7 @@ const Login = () => {
         dispatch(loginStart);
         setLoading(true);
         const { data } = await axios.post(
-          "http://localhost:8080/api/authentication/login",
+          "https://ticket-api-production-610a.up.railway.app/api/authentication/login",
           payload
         );
 

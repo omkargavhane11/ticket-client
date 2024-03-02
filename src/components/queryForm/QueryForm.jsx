@@ -39,7 +39,7 @@ const QueryForm = () => {
 
   const createQuery = async () => {
     const getCount = await axios.get(
-      "http://localhost:8080/api/query"
+      "https://ticket-api-production-610a.up.railway.app/api/query"
     );
 
     const queryInfo = {
@@ -69,7 +69,7 @@ const QueryForm = () => {
         });
       } else {
         const newQuery = await axios.post(
-          "http://localhost:8080/api/query",
+          "https://ticket-api-production-610a.up.railway.app/api/query",
           queryInfo
         );
         console.log(newQuery);
