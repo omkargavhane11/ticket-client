@@ -283,12 +283,12 @@ const SingleQueryPage = () => {
           {queryDetail.status === "closed" && (
             <div className="queriesPage_bottom_right_bottom">
               <div className="feedback">
-                <div className="mentor_Solution_key">Solution by Mentor</div>
+                <div className="mentor_Solution_key">Solution by Mentor {user.role === "mentor" ? " (You)" : ""}</div>
                 <div className="mentor_Solution_value">
                   {queryDetail.solution === "" ? " - " : queryDetail.solution}
                 </div>
-                <hr />
-                <div className="student_feedback_key">Your Feedback</div>
+                <hr style={{marginTop:"1rem"}} />
+                <div className="student_feedback_key">Student Feedback {user.role === "student" ? " (You)" : ""}</div>
                 <div className="student_feedback_value">
                   {queryDetail.feedback}
                 </div>
