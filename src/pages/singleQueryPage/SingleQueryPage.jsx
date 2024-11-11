@@ -102,13 +102,13 @@ const SingleQueryPage = () => {
   async function getData() {
     // get query conversation
     const { data } = await axios.get(
-      `https://ticket-api-production-610a.up.railway.app/api/messages/${queryNo}`
+      `${API_URL}/api/messages/${queryNo}`
     );
     setMessages(data);
 
     // get query details
     const queryDetail = await axios.get(
-      `https://ticket-api-production-610a.up.railway.app/api/query/single/${queryNo}`
+      `${API_URL}/api/query/single/${queryNo}`
     );
     setQueryDetail(queryDetail.data);
   }
@@ -136,13 +136,13 @@ const SingleQueryPage = () => {
     if (feedback !== (null || "")) {
       if (user.role === "student") {
         const { data } = await axios.put(
-          `https://ticket-api-production-610a.up.railway.app/api/query/update/${queryNo}`,
+          `${API_URL}/api/query/update/${queryNo}`,
           studentPayload
         );
         console.log(data);
       } else {
         const { data } = await axios.put(
-          `https://ticket-api-production-610a.up.railway.app/api/query/update/${queryNo}`,
+          `${API_URL}/api/query/update/${queryNo}`,
           mentorPayload
         );
         console.log(data);

@@ -5,6 +5,7 @@ import { useNavigate } from "react-router-dom";
 import QueryBox from "../../components/queryBox/QueryBox";
 import Topbar from "../../components/topbar/Topbar";
 import { useSelector } from "react-redux";
+import { API_URL } from "../../constant"
 
 const Pick = () => {
   const user = useSelector((state) => state.currentUser);
@@ -16,7 +17,7 @@ const Pick = () => {
   async function getQueryData() { 
     try {
       if (user.role === "mentor") {
-        const { data } = await axios.get(`https://ticket-api-production-610a.up.railway.app/api/query`);
+        const { data } = await axios.get(`${API_URL}/api/query`);
         let unAssignedQueries = data.filter((query) => {
           return query.status === "unassigned";
         });

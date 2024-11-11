@@ -5,6 +5,7 @@ import axios from "axios";
 import { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 import Topbar from "../../components/topbar/Topbar";
+import { API_URL } from "../../constant"
 
 const QueriesPage = () => {
   const navigate = useNavigate();
@@ -15,12 +16,12 @@ const QueriesPage = () => {
     try {
       if (user?.role === "mentor") {
         const { data } = await axios.get(
-          `https://ticket-api-production-610a.up.railway.app/api/query/mentor/${user._id}`
+          `${API_URL}/api/query/mentor/${user._id}`
         );
         setQueriesData(data);
       } else {
         const queries = await axios.get(
-          `https://ticket-api-production-610a.up.railway.app/api/query/student/${user._id}`
+          `${API_URL}/api/query/student/${user._id}`
         );
         setQueriesData(queries.data);
       }
