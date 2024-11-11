@@ -1,3 +1,7 @@
+acronym{
+  text-decoration: none;
+}
+
 .queriesPage {
   display: flex;
   flex-direction: column;

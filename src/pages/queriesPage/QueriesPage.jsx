@@ -58,8 +58,8 @@ const QueriesPage = () => {
           </button>
         )}
         <div className="dashboard">
-          U: {queriesData.filter((q) => q.status === "unassigned").length} | A:{" "}
-          {queriesData.filter((q) => q.status === "assigned").length} | C:{" "}
+          <acronym title="Unassigned">U:</acronym> {queriesData.filter((q) => q.status === "unassigned").length} | <acronym title="Assigned">A:</acronym>{" "}
+          {queriesData.filter((q) => q.status === "assigned").length} | <acronym title="Completed">C:</acronym>{" "}
           {queriesData.filter((q) => q.status === "closed").length}
         </div>
       </div>
