@@ -10,6 +10,7 @@ import Topbar from "../../components/topbar/Topbar";
 import { useRef } from "react";
 import { io } from "socket.io-client";
 import Moment from "react-moment";
+import { API_URL } from "../../constant"
 
 const SingleQueryPage = () => {
   const navigate = useNavigate();
@@ -67,7 +68,7 @@ const SingleQueryPage = () => {
 
     if (inputMsg !== null || inputMsg !== "") {
       const sendMsg = await axios.post(
-        "https://ticket-api-production-610a.up.railway.app/api/messages",
+        `${API_URL}/api/messages`,
         payload
       );
 

@@ -5,6 +5,7 @@ import axios from "axios";
 import { useSelector } from "react-redux";
 import Topbar from "../topbar/Topbar";
 import { useToast } from "@chakra-ui/react";
+import { API_URL } from "../../constant"
 
 const QueryForm = () => {
   const toast = useToast();
@@ -39,7 +40,7 @@ const QueryForm = () => {
 
   const createQuery = async () => {
     const getCount = await axios.get(
-      "https://ticket-api-production-610a.up.railway.app/api/query"
+      `${API_URL}/api/query`
     );
 
     const queryInfo = {
@@ -69,7 +70,7 @@ const QueryForm = () => {
         });
       } else {
         const newQuery = await axios.post(
-          "https://ticket-api-production-610a.up.railway.app/api/query",
+          `${API_URL}/api/query`,
           queryInfo
         );
         console.log(newQuery);

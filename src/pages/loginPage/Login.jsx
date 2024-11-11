@@ -6,6 +6,7 @@ import { useSelector, useDispatch } from "react-redux";
 import { loginFailure, loginStart, loginSuccess } from "../../redux/user";
 import { useToast } from "@chakra-ui/react";
 import { CircularProgress } from "@mui/material";
+import { API_URL } from "../../constant"
 
 const Login = () => {
   const toast = useToast();
@@ -37,7 +38,7 @@ const Login = () => {
         dispatch(loginStart);
         setLoading(true);
         const { data } = await axios.post(
-          "https://ticket-api-production-610a.up.railway.app/api/authentication/login",
+          `${API_URL}/api/authentication/login`,
           payload
         );
 

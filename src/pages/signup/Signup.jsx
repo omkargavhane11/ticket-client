@@ -5,6 +5,7 @@ import axios from "axios";
 import { useSelector, useDispatch } from "react-redux";
 import { useToast } from "@chakra-ui/react";
 import { CircularProgress } from "@mui/material";
+import { API_URL } from "../../constant"
 
 const Signup = () => {
   const toast = useToast();
@@ -40,7 +41,7 @@ const Signup = () => {
       try {
         setLoading(true);
         const { data } = await axios.post(
-          "https://ticket-api-production-610a.up.railway.app/api/user/register",
+          `${API_URL}/api/user/register`,
           payload
         );
 

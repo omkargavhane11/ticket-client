@@ -3,6 +3,7 @@ import { useNavigate } from "react-router-dom";
 import { useSelector } from "react-redux";
 import axios from "axios";
 import { useToast } from "@chakra-ui/react";
+import { API_URL } from "../../constant"
 
 const QueryBox = ({ query }) => {
   const toast = useToast();
@@ -16,7 +17,7 @@ const QueryBox = ({ query }) => {
     };
     try {
       const pick = await axios.put(
-        "https://ticket-api-production-610a.up.railway.app/api/query/pick",
+        `${API_URL}/api/query/pick`,
         payload
       );
       // console.log(pick.data);
