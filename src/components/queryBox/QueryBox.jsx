@@ -20,7 +20,6 @@ const QueryBox = ({ query }) => {
         `${API_URL}/api/query/pick`,
         payload
       );
-      // console.log(pick.data);
       toast({
         title: "Query Assigned",
         description: `${pick.data.queryNo} has been assigned to you successfully`,

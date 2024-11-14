@@ -18,8 +18,6 @@ const QueryForm = () => {
   const [fromData, setFromDate] = useState(null);
   const [toDate, setToDate] = useState(null);
 
-  console.log(window.location.pathname);
-
   const handleCategoryChange = () => {
     const options = document.getElementsByClassName("topic_category_value");
     for (let i = 0; i < options.length; i++) {
@@ -73,7 +71,6 @@ const QueryForm = () => {
           `${API_URL}/api/query`,
           queryInfo
         );
-        console.log(newQuery);
         toast({
           title: "Query created.",
           // description: "We've created your account for you.",

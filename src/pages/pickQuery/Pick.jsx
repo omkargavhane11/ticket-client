@@ -12,7 +12,6 @@ const Pick = () => {
   const navigate = useNavigate();
   const [queriesData, setQueriesData] = useState([]);
 
-  console.log("user :: ", user);
 
   async function getQueryData() { 
     try {

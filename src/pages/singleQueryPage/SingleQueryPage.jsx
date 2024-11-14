@@ -24,7 +24,6 @@ const SingleQueryPage = () => {
   const [feedback, setFeedback] = useState("");
   const [queryDetail, setQueryDetail] = useState("");
 
-  console.log(queryDetail);
 
   const scrollRef = useRef();
   useEffect(() => {
@@ -139,13 +138,11 @@ const SingleQueryPage = () => {
           `${API_URL}/api/query/update/${queryNo}`,
           studentPayload
         );
-        console.log(data);
       } else {
         const { data } = await axios.put(
           `${API_URL}/api/query/update/${queryNo}`,
           mentorPayload
         );
-        console.log(data);
       }
       setFeedback("");
       setOpen(false);
@@ -268,7 +265,7 @@ const SingleQueryPage = () => {
               <div className="assignedTo">
                 <div className="assignedTo_key">Assigned to:</div>
                 <div className="assignedTo_value">
-                  {queryDetail.assignedTo === "" ? "-" : ""}
+                  {queryDetail?.assignedTo?._id === user?._id ? "You" : queryDetail?.assignedTo?.name ?? "-"}
                 </div>
               </div>
             </div>
@@ -287,7 +284,7 @@ const SingleQueryPage = () => {
                 <div className="mentor_Solution_value">
                   {queryDetail.solution === "" ? " - " : queryDetail.solution}
                 </div>
-                <hr style={{marginTop:"1rem"}} />
+                <hr style={{ marginTop: "1rem" }} />
                 <div className="student_feedback_key">Student Feedback {user.role === "student" ? " (You)" : ""}</div>
                 <div className="student_feedback_value">
                   {queryDetail.feedback}
